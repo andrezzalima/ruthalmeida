@@ -1,73 +1,28 @@
 "use client";
 
 import './globals.css';
-import { Roboto, Montserrat_Alternates, Raleway, Playfair_Display } from 'next/font/google';
-
+import Carousel from "./carrossel";
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
-import '../next-i18next.config.js';
 import Image from 'next/image';
-import  Carousel  from "./carrossel";
 
-import { RiNextjsFill } from "react-icons/ri";
-import { RiJavascriptFill } from "react-icons/ri";
-import { FaHtml5 } from "react-icons/fa";
-import { IoLogoCss3 } from "react-icons/io";
-import { SiTailwindcss } from "react-icons/si";
-import { FaBootstrap } from "react-icons/fa";
-import { FaPhp } from "react-icons/fa6";
-import { FaNodeJs } from "react-icons/fa6";
-import { FaReact } from "react-icons/fa";
-import { SiMongodb } from "react-icons/si";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { SiExpress } from "react-icons/si";
-import { IoLogoLinkedin } from "react-icons/io5";
-import { FaGithub, FaInstagram } from "react-icons/fa6";
-import { IoCloudDownloadSharp } from "react-icons/io5";
-import { DiCodeigniter } from "react-icons/di";
+import { Montserrat, Playfair_Display } from 'next/font/google';
+import '../next-i18next.config.js';
+
+
+import { FaGithub, FaInstagram, FaRegCopyright } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
-import { FaRegCopyright } from "react-icons/fa6";
 
-const raleway = Raleway({
-  weight: ['400', '500', '700', '900'],
-  subsets: ['latin'],
-});
-
-const montserrat = Montserrat_Alternates({
-  weight: ['300', '400', '500', '700', '900'],
-  subsets: ['latin'],
-
-})
-
-
-
-const roboto = Roboto({
+const montserrat = Montserrat({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
 })
+
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '700'], // Você pode escolher diferentes pesos
+  weight: ['400', '700'],
 });
 
-const projects = [
-  {
-    image: "/images/projeto1.png",
-    link: "https://challenge-frontend-mentor-eight.vercel.app/"
-  },
-  {
-    image: "/images/projeto2.png",
-    link: "https://bytes4colors-j9vc9ns42-andrezzalima.vercel.app/"
-  },
-  {
-    image: "/images/projeto4.png",
-    link: "https://pixel-31hycb1qw-andrezzalimas-projects.vercel.app/"
-  },
-  {
-    image: "/images/projeto5.png",
-    link: "https://cristianefabres.vercel.app/"
-  }
-];
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -110,7 +65,7 @@ export default function Home() {
 
 
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState('pt');
+  const [language, setLanguage] = useState('br');
   const [isLanguageLoaded, setIsLanguageLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -132,16 +87,17 @@ export default function Home() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
   return (
     <>
 
       {isLanguageLoaded ? (
-        <section className={`flex flex-col md:min-h-screen md:w-screen w-scren text-customBlack ${raleway.className} md:px-52  md:bg-customBlack`}>
-          
-          <div className='relative bg-customGray flex flex-col items-center'>
+        <section className={`flex flex-col md:min-h-screen md:max-w-screen max-w-scren text-customblue ${montserrat.className}`}>
+
+          <div className='w-full bg-customwhite flex flex-col '>
             {/* Botão do menu hambúrguer */}
-            <div className="fixed top-5 left-5 md:left-auto z-10 w-2/3">
-              <div className="flex flex-col justify-center md:flex-row md:px-10 px-5">
+            <div className="flex justify-around items-center bg-customblue text-customwhite">
+              <div className="flex flex-col justify-center md:flex-row md:justify-beetween ">
                 {/* Botão para dispositivos móveis */}
                 <button
                   className="md:hidden block z-50"
@@ -158,284 +114,256 @@ export default function Home() {
                   className={`${isMenuOpen && window.innerWidth < 768
                     ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customRose"
                     : "hidden"
-                    } md:flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center gap-20 text-sm uppercase w-ful z-[20] h-8`}
+                    } md:flex flex-col md:gap-10 md:flex-row md:justify-between md:items-center text-sm w-full z-[20] h-8`}
                 >
                   <a
-                    href="#about"
+                    href="/"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-purple-700 transition-all duration-300"
+                    className="hover:text-customgold transition-all duration-300"
                   >
                     {t("about-me")}
                   </a>
-                  <a
-                    href="#projects"
+                  <a href="/mentoria"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-purple-700 transition-all duration-300"
+                    className="hover:text-customgold transition-all duration-300"
                   >
-                    {t("my-projects")}
+                    Mentoria
                   </a>
                   <a
-                    href="#experience"
+                    href="/consultoria"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-purple-700 transition-all duration-300"
+                    className="hover:text-customgold transition-all duration-300"
                   >
-                    {t("my-experience")}
+                    Consultoria
+                  </a>
+                  <a
+                    href="/montagem"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="hover:text-customgold transition-all duration-300"
+                  >
+                    Montagem
+                  </a>
+                  <a
+                    href="/pegueemonte"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="hover:text-customgold transition-all duration-300"
+                  >
+                    Pegue e Monte
+                  </a>
+                  <a
+                    href="/aluguel"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="hover:text-customgold transition-all duration-300"
+                  >
+                    Aluguel
                   </a>
                   <a
                     href="#contact"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-purple-700 transition-all duration-300"
+                    className="hover:text-customgold transition-all duration-300"
                   >
-                    {t("contact")}
+                    Contatos
                   </a>
-                  <a
-                    href="#technologies"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-purple-700 transition-all duration-300"
+                </div>
+              </div>
+
+
+              {/* Div imagem e links sociais */}
+              <div className=''>
+                <div className="flex gap-6 py-8 justify-center md:gap-16">
+                  <a href='' target='_blank' rel="noopener noreferrer">
+                    <FaGithub className='text-2xl' />
+                  </a>
+                  <a href='' target='_blank' rel="noopener noreferrer">
+                    <FaInstagram className='text-2xl' />
+                  </a>
+
+                </div>
+              </div>
+              <div className={`${playfairDisplay.className}`}>
+                <div className="">
+                  <button
+                    className="flex items-center bg-transparent hover:cursor-pointer"
+                    onClick={toggleDropdown}
                   >
-                    {t("technologies")}
-                  </a>
+                    <Image src={language === 'br' ? '/images/brasil.png' : '/images/eua.png'}
+                      alt={language === 'br' ? 'BR' : 'EUA'}
+                      width={30}
+                      height={30}
+                      className="rounded" />
+                  </button>
+                  {isOpen && (
+                    <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50 ">
+                      <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg "
+                        onClick={() => handleLanguageChange('br')}>
+                        <Image
+                          src="/images/brasil.png"
+                          width={20}
+                          height={20}
+                          alt="BR"
+                        />
+                        <span className="ml-1 text-xs p-2 mr-4">PT</span>
+                      </li>
+                      <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer "
+                        onClick={() => handleLanguageChange('eua')} >
+                        <Image
+                          src="/images/eua.png"
+                          width={20}
+                          height={20}
+                          alt="EUA"
+                        />
+                        <span className="ml-1 text-xs p-2">EN</span>
+                      </li>
+                    </ul>
+                  )}
                 </div>
               </div>
             </div>
 
-
-            <div className={` absolute top-5 right-7 ${raleway.className}`}>
-              <div className="relative">
-                <button
-                  className="flex items-center bg-transparent hover:cursor-pointer"
-                  onClick={toggleDropdown}
-                >
-                  <Image src={language === 'pt' ? '/images/portugal.png' : '/images/inglaterra.png'}
-                    alt={language === 'pt' ? 'PT' : 'EN'}
-                    width={30}
-                    height={30}
-                    className="mr-1" />
-                </button>
-                {isOpen && (
-                  <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50">
-                    <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg "
-                      onClick={() => handleLanguageChange('pt')}>
-                      <Image
-                        src="/images/portugal.png"
-                        width={20}
-                        height={20}
-                        alt="PT"
-                      />
-                      <span className="ml-1 text-xs p-2 mr-4">PT</span>
-                    </li>
-                    <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer"
-                      onClick={() => handleLanguageChange('en')} >
-                      <Image
-                        src="/images/inglaterra.png"
-                        width={20}
-                        height={20}
-                        alt="EN"
-                      />
-                      <span className="ml-1 text-xs p-2">EN</span>
-                    </li>
-                  </ul>
-                )}
-              </div>
-            </div>
 
             {/* Sobre mim */}
-            <div id="about" className='flex flex-col items-center md:h-full px-10 md:px-20 w-full min-h-screen bg-customGray'>
+            <div id="about" className='flex flex-col items-center justify-center md:h-full px-10 md:px-20 w-full min-h-60 bg-customGray' style={{
+              backgroundImage: "url('images/background-home2.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}>
+              {/* ruth almeida */}
+              <div className='flex flex-col items-center justify-center w-full mt-5 p-1 text-customwhite text-6xl text-center'>
+                <h1>RUTH ALMEIDA </h1>
+                <p className={`${playfairDisplay.className} text-2xl`}>Mesa posta, etiqueta na América e reconexão familiar</p>
+              </div>
 
-              {/* OI, EU SOU */}
-              <div className='flex flex-col items-center justify-center w-full md:w-full text-sm mt-5 p-1'>
-                <div className={`text-xl md:text-3xl w-full mt-20 ${raleway.className}`}>
-                  <h2 className='mb-4 text-4xl md:text-7xl animate-fade-in-up uppercase font-bold'>
-                    {t('hi')}
+            </div>
+            {/* div descrição */}
+            <div className='flex justify-center items-center gap-20 w-full md:w-full text-sm animate-fade-in-up h-screen'
+              style={{
+                backgroundImage: "url('images/about-me.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}>
+              <div className='w-1/2 py-12 '>
+                <h2 className='text-4xl mb-6'>Sobre mim:</h2>
+                <p className='text-sm md:text-md md:mb-2 mb-4 leading-relaxed'>
+                  Sou apaixonada por criar momentos especiais à mesa e acredito que a conexão familiar começa nos pequenos detalhes. Como especialista em Mesa Posta e etiqueta, meu objetivo é ajudar famílias a se reconectarem, valorizando o tempo e o cuidado ao preparar uma refeição. Através da etiqueta à mesa e de ensinamentos sobre as tradições da cultura americana, ofereço uma abordagem que mistura elegância e funcionalidade, tornando o dia a dia mais especial.
+                </p>
+                <p className='text-sm md:text-md mb-2 leading-relaxed'>
+                  Combinando tradição e modernidade, ensino como transformar refeições em experiências significativas, fortalecendo laços familiares e criando memórias ao redor da mesa. Quer seja um jantar formal ou um encontro casual, acredito que o ato de reunir a família, com atenção aos detalhes e às boas maneiras, é o primeiro passo para uma convivência mais harmoniosa.
+                </p>
+                <p className='text-sm md:text-md leading-relaxed'>
+                  Venha comigo nessa jornada para redescobrir o prazer de estar à mesa com quem você ama!
+                </p>
+              </div>
+              <div className='w-auto flex justify-center items-center py-12'>
+                <img src="images/ruth-main.jpg" className=' w-60 h-auto rounded-md shadow-custom'></img>
+              </div>
+            </div>
+
+
+
+            {/* div serviços */}
+            <div className='text-center max-w-full min-h-screen bg-customblue p-12 pb-10'
+
+            >
+              <h2 className={`text-3xl font-semibold text-center mb-10 md:text-4xl text-customwhite ${playfairDisplay.className}`}>
+                Meus Serviços
+              </h2>
+
+              {<Carousel />}
+
+            </div>
+
+            {/* div ebook */}
+            <div className='text-center p-12'>
+              <div className=" flex flex-col md:flex-row md: justify-around items-center gap-8 text-center md:text-left md:min-h-screen bg-customwhite" id="ebook-section">
+                <div className="md:w-auto flex justify-center items-start md:justify-center">
+                  <img src="/images/ebook.png" alt="E-book sobre Mesa Posta" className="w-full max-w-sm md:max-w-md rounded-lg shadow-lg" />
+                </div>
+
+                <div className="md:w-1/2 space-y-6">
+                  <h2 className={`text-3xl md:text-4xl font-semibold ${playfairDisplay.className} text-customblue`}>
+                    Descubra como reconectar sua família e criar momentos inesquecíveis com a Mesa Posta
                   </h2>
-                  <p className='mb-4 text-4xl md:text-6xl md:ml-40 ml-20 animate-fade-in-up uppercase font-bold'>
-                    {t('i-am')}
-                  </p>
-                  {/*NOME */}
-                  <div className='relative font-bold animate-fade-in-up m-0 p-0 h-96'>
-                    <div className='flex justify-center'>
-                      <img src='/images/ft_1.png' className='w-96'></img>
-                    </div>
-                    <p
-                      className={`absolute bottom-12 left-3 md:top-16 md:left-96 mb-4 text-4xl md:text-6xl md:ml-48 animate-fade-in-up uppercase  text-customRose md:text-customBlack z-[10] font-semibold w-1/2  text-stroke`}
-                    >
-                      {t("name")}
-                    </p>
-                    <p
-                      className={`absolute bottom-12 -right-12 md:top-32 md:-right-52 mb-4 text-4xl md:text-6xl md:ml-24 animate-fade-in-up uppercase text-customRose md:text-customBlack z-[10] font-semibold w-1/2`}
 
-                    >
-                      {t("lastname")}
-                    </p>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* div descrição */}
-              <div className='relative -top-20 w-full md:h-screen md:w-full text-sm mt-5 md:mt-16 p-1 md:pl-10 bg-customBlack rounded-b-lg text-customGray z-[0] pt-20 animate-fade-in-up'>
-                <div className='w-full mb-5 md:p-10 md:px-24 px-8 '>
-                  <p className='text-sm md:text-md md:mb-2 mb-4 leading-relaxed'>
-                    {t('description-pt1')}
+                  <p className="text-lg text-customblack font-light">
+                    <strong>Você já sentiu que...</strong>
                   </p>
-                  <p className='text-sm md:text-md mb-2 leading-relaxed'>
-                    {t('description-pt2')}
-                  </p>
-                  <p className='text-sm md:text-md leading-relaxed'>
-                    {t('description-pt3')}
-                  </p>
-                </div>
+                  <ul className="list-inside list-disc space-y-2 text-left mx-auto text-customblack ml-5">
+                    <li>A conexão familiar se perdeu e os momentos à mesa praticamente desapareceram?</li>
+                    <li>Não sabe como montar uma mesa posta elegante e funcional?</li>
+                    <li>Se sente insegura ao participar de eventos em que a maioria das pessoas segue as regras de etiqueta americanas?</li>
+                  </ul>
 
-                {/* Div imagem e links sociais */}
-                <div className='w-full'>
-                  <div className="flex gap-6 py-8 justify-center md:gap-16">
-                    <a href='https://www.linkedin.com' target='_blank' rel="noopener noreferrer">
-                      <IoLogoLinkedin className='text-2xl' />
-                    </a>
-                    <a href='https://www.github.com/andrezzalima' target='_blank' rel="noopener noreferrer">
-                      <FaGithub className='text-2xl' />
-                    </a>
-                    <a href='https://www.instagram.com/andrezzalimadev' target='_blank' rel="noopener noreferrer">
-                      <FaInstagram className='text-2xl' />
-                    </a>
-                    <a href='/I-CV_Andrezza_Lima.pdf' download='CV_Andrezza_Lima.pdf' className='flex items-center'>
-                      <IoCloudDownloadSharp className='mr-3 text-2xl' /> Download CV
-                    </a>
+                  <p className="text-lg font-light text-customblack">
+                    Eu já passei por isso também, e foi essa experiência que me motivou a criar algo especial para você.
+                  </p>
+
+                  <h3 className="text-xl font-semibold text-customblue">Quero te dar um presente!</h3>
+
+                  <p className="text-lg text-customblack font-light">
+                    Baixe agora meu <strong>eBook gratuito</strong> e aprenda tudo sobre <strong>Mesa Posta</strong> e como ela pode ajudar a trazer de volta aqueles momentos valiosos com sua família. Esse manual simples e prático vai te guiar no processo de transformar suas refeições em verdadeiros encontros memoráveis.
+                  </p>
+
+                  <div className="flex justify-center md:justify-start">
                   </div>
                 </div>
               </div>
-
-            </div>
-
-            {/* div projects */}
-            <div  className='text-center text-customBlack px-5 w-full' id='projects' >
-              <h2 className={`text-3xl mb-4 ${raleway.className} font-medium`}>{t('my-projects')}</h2>
-                            
-                {<Carousel />}
-             
-            </div>
-            
-            {/* div experiences */}
-            <div className="p-5 flex flex-col items-center gap-5 text-center md:h-screen" id="experience">
-              <h2 className={`text-3xl my-4 md:mt-20 ${raleway.className}`}>{t('experience')}</h2>
-
-              <div className='flex flex-col gap-3 p-5 border-2 border-purple-400 rounded-xl md:w-1/2  transition-all duration-300 ease-in-out hover:shadow-lg hover:shadow-purple-400 hover:scale-105 hover:bg-purple-50'>
-                <h3 className='text-customPurple font-bold'>{t('function1')}</h3>
-                <p><span className='text-customPurple'>Skills: </span>PHP, CODEIGNITER, POSTGRESQL, TORTOISE, XAMPP, BOOTSTRAP</p>
-                <p className='text-sm'>{t('desctiption-f1')}</p>
-              </div>
-
-              <div className='flex flex-col mb-4 gap-3 p-5 border-2 border-purple-400 rounded-xl md:w-1/2  transition-all duration-300 ease-in-out hover:shadow-lg hover:shadow-purple-400 hover:scale-105 hover:bg-purple-50'>
-                <h3 className='text-customPurple font-bold'>{t('function2')}</h3>
-                <p><span className='text-customPurple'>Skills: </span>HTML, CSS, JAVASCRIPT, REACT, MONGODB, TAILWIND</p>
-                <p className='text-sm'>{t('desctiption-f2')}</p>
-              </div>
+              <button className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300">
+                Baixar E-Book
+              </button>
             </div>
 
 
-            {/* Formulário de contato */}
-            <div id='contact' className='flex flex-col items-center justify-center w-full text-customGray p-5 bg-customPurple md:h-screen'>
-              <h2 className={`text-2xl my-4 ${raleway.className} font-medium p-5 md:mb-16 md:text-3xl`}>{t('send-message')}</h2>
-              <form className="flex flex-col mb-12 items-center gap-6 w-5/6 md:w-1/2 text-slate-700" onSubmit={handleSubmit}>
+
+            <div id='contact' className='flex items-center justify-center w-full gap-20 p-12 bg-customblue text-customwhite md:min-h-screen'>
+              {/* Título da seção */}
+              <div className='w-1/3'>
+                <h2 className={`text-3xl font-semibold text-center mb-4 md:text-4xl ${playfairDisplay.className}`}>
+                  Fale comigo
+                </h2>
+                {/* Subtítulo explicativo */}
+                <p className='text-lg text-center mb-8 max-w-2xl'>
+                  Caso deseje esclarecer dúvidas, agendar uma mentoria ou discutir como posso ajudar a reconectar sua família através da Mesa Posta, preencha o formulário abaixo. Responderei o mais breve possível.
+                </p></div>
+
+              {/* Formulário de contato */}
+              <form className="flex flex-col items-center gap-6 w-full md:w-1/2 bg-white p-8 rounded-xl shadow-lg" onSubmit={handleSubmit}>
                 <input
-                  className='p-2 w-full rounded-xl border-2 border-transparent focus:border-purple-500 focus:bg-customGray focus:outline-none transition-all duration-300 ease-in-out'
-                  type="text" placeholder={t('f-name')} name="name" required value={name}
+                  className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                  type="text" placeholder="Seu nome" name="name" required value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                  className='p-2 w-full rounded-xl border-2 border-transparent focus:border-purple-500 focus:bg-customGray focus:outline-none transition-all duration-300 ease-in-out'
-                  type="email" placeholder={t('f-email')} name="email" required value={email}
+                  className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                  type="email" placeholder="Seu email" name="email" required value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <textarea
-                  className='p-2 h-32 w-full rounded-xl border-2 border-transparent focus:border-purple-500 focus:bg-customGray focus:outline-none transition-all duration-300 ease-in-out'
-                  placeholder={t('f-message')} name="message" required value={message}
-                  onChange={(e) => setMessage(e.target.value)}>
-                </textarea>
+                  className='p-3 w-full h-32 rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                  placeholder="Sua mensagem" name="message" required value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+
                 <input
                   type="submit"
-                  value={t('f-send')}
-                  className='p-2 text-customGray w-1/2 rounded-xl bg-purple-600 hover:bg-customRose hover:text-customBlack hover:font-semibold shadow-md hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer'
+                  value="Enviar mensagem"
+                  className='w-full md:w-1/2 p-3 text-customwhite bg-customgold hover:bg-opacity-90 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer'
                 />
               </form>
             </div>
 
 
-            {/* div tecnologias */}
-            <div id="technologies" className='flex flex-col items-center justify-around p-5'>
-              <h2 className={`text-3xl mt-4 mb-12 ${raleway.className} font-medium`}>{t('technologies')}</h2>
-              <div className='flex flex-wrap justify-evenly items-center content-center mb-4 gap-10'>
-                <div className='flex flex-col items-center '>
-                  <FaHtml5 className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  HTML
-                </div>
-                <div className='flex flex-col items-center'>
-                  <IoLogoCss3 className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  CSS
-                </div>
-                <div className='flex flex-col items-center'>
-                  <SiTailwindcss className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  Tailwind
-                </div>
-                <div className='flex flex-col items-center'>
-                  <FaBootstrap className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  Bootstrap
-                </div>
-                <div className='flex flex-col items-center'>
-                  <RiJavascriptFill className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  JavaScript
-                </div>
-                <div className='flex flex-col items-center'>
-                  <FaPhp className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  PHP
-                </div>
-                <div className='flex flex-col items-center'>
-                  <RiNextjsFill className='text-3xl md:text-6xl text-center text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  Next.js
-                </div>
-                <div className='flex flex-col items-center'>
-                  <FaReact className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  React
-                </div>
-                <div className='flex flex-col items-center'>
-                  <DiCodeigniter className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  CodeIgniter
-                </div>
-                <div className='flex flex-col items-center'>
-                  <FaNodeJs className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  Node.js
-                </div>
-                <div className='flex flex-col items-center'>
-                  <SiMongodb className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  MongoDB
-                </div>
-                <div className='flex flex-col items-center'>
-                  <BiLogoPostgresql className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-customPurple hover:drop-shadow-glow' />
-                  PostgreSQL
-                </div>
-                <div className='flex flex-col items-center'>
-                  <SiExpress className='text-3xl md:text-6xl text-customPurple transition-transform duration-300 hover:scale-110 hover:text-purple-600 hover:drop-shadow-glow' />
-                  Express
-                </div>
-              </div>
-            </div>
-
-
-
             {/* Rodapé */}
-            <footer className={`bg-customBlack w-screen text-customGray p-5 flex flex-col items-center justify-center min-h-32 gap-5 ${raleway.className}`}>
-
+            <footer className={` w-screen text-customblue p-8 flex flex-col items-center justify-center gap-5`}>
               <div className='flex'>
                 <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
               </div>
             </footer>
-
           </div>
         </section>
 
 
       ) : (
-        <p className='h-screen w-screen flex justify-center items-center bg-black text-purple-400'>Loading...</p> // Exibe isso enquanto o idioma não estiver carregado
+        <p className='h-screen w-screen flex justify-center items-center bg-customblue text-white'>Loading...</p> // Exibe isso enquanto o idioma não estiver carregado
       )}
     </>
   );

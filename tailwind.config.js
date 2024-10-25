@@ -23,12 +23,14 @@ module.exports = {
         },
       },
       colors: {
-        customGray: '#e6e7e8',
-        customBlack: '#2b2b2b',
-        customPurple: '#6b21a8',
-        customPurpleLight: '#c084fc',
-        customGrayDark: '#d9d9d9',
-        customRose: '#c7b3c2',
+        customblue: '#06778b',
+        customgold: '#776421',
+        customwhite: '#fff',
+        customblack: '#000',
+       
+      },
+      boxShadow: {
+        custom: '5px 5px 0px 0px #06778b',
       },
     },
   },

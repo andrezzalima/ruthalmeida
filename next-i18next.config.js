@@ -6,8 +6,8 @@ i18n
   .use(Backend)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'pt',
-    lng: "pt",
+    fallbackLng: 'br',
+    lng: "br",
     backend: {
       loadPath: '/language/{{lng}}/common.json',
     },
