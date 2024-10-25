@@ -88,68 +88,36 @@ const Consultoria = () => {
             <div className='w-full bg-customwhite flex flex-col '>
                 {/* Botão do menu hambúrguer */}
                 <div className="flex justify-around items-center bg-customblue text-customwhite">
-                    <div className="flex flex-col justify-center md:flex-row md:justify-between ">
+                    <div className="flex flex-col justify-center md:flex-row md:justify-between">
                         {/* Botão para dispositivos móveis */}
                         <button
                             className="md:hidden block z-50"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             <IoMenu
-                                className={`text-3xl md:text-6xl ${isMenuOpen ? "text-customPurple" : "text-customRose"
-                                    }`}
+                                className={`text-3xl md:text-6xl ${isMenuOpen ? "text-customPurple" : "text-customRose"}`}
                             />
                         </button>
 
                         {/* Menu */}
                         <div
                             className={`${isMenuOpen && window.innerWidth < 768
-                                ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customRose"
+                                ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customblue text-white justify-center items-center"
                                 : "hidden"
                                 } md:flex flex-col md:gap-10 md:flex-row md:justify-between md:items-center text-sm w-full z-[20] h-8`}
                         >
-                            <a
-                                href="/"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                {t("about-me")}
-                            </a>
-                            <a href="/mentoria"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Mentoria
-                            </a>
-                            <a
-                                href="/consultoria"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Consultoria
-                            </a>
-                            <a
-                                href="/montagem"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Montagem
-                            </a>
-                            <a
-                                href="/pegueemonte"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Pegue e Monte
-                            </a>
-                            <a
-                                href="/aluguel"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Aluguel
-                            </a>
-
+                            {["home", "mentoria", "consultoria", "montagem", "pegueemonte", "aluguel", "contact"].map((item, index) => (
+                                <a
+                                    href={item.toLowerCase() === "home" ? "/" : `/${item}`}
+                                    key={index}
+                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                    className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}
+                                >
+                                    {t(item)}
+                                </a>
+                            ))}
                         </div>
+
                     </div>
 
                     {/* Div imagem e links sociais */}
@@ -207,20 +175,10 @@ const Consultoria = () => {
 
             <section className="bg-customwhite text-customblack pt-12">
                 <div className="container mx-auto px-6">
-                    <div className='flex justify-center items-center gap-32 mb-10 py-12'>
-                        <div>
-                            <h2 className={`text-3xl font-bold text-customblue mb-6 text-center ${playfairDisplay.className}`}>
-                                Consultoria Especializada para Sua Mesa Posta
-                            </h2>
-
-                            <p className="text-lg text-center text-gray-700 mb-10 max-w-2xl mx-auto">
-                                Se você precisa de orientação imediata sobre mesa posta ou etiqueta americana, nossa consultoria é ideal. Com a expertise da Ruth Almeida, você encontrará soluções práticas e rápidas para suas dúvidas e necessidades específicas.
-                            </p>
-                        </div>
-
-                        <div className="flex justify-center items-center">
+                    <div className='flex flex-col md:flex-row justify-center items-center gap-10 mb-10 py-12'>
+                        <div className="flex justify-center items-center mb-6 md:mb-0">
                             <Image
-                                src="/images/consultoria.png" // Adicione a imagem da consultoria
+                                src="/images/consultoria.png"
                                 alt="Consultoria em Ação"
                                 width={200}
                                 height={200}
@@ -228,91 +186,86 @@ const Consultoria = () => {
                                 quality={80}
                             />
                         </div>
+                        <div className="text-center">
+                            <h2 className={`text-3xl font-bold text-customblue mb-6 ${playfairDisplay.className}`}>
+                                {t("consultancy-title")}
+                            </h2>
+                            <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
+                                {t("consultancy-description")}
+                            </p>
+                            <a href="https://api.whatsapp.com/send?phone=14435381087&text=Olá!%20Estou%20interessado%20na%20consultoria%20especializada%20para%20mesa%20posta.%0AHi!%20I'm%20interested%20in%20the%20specialized%20consultation%20for%20table%20setting." className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
+                                {t("consultancy-button")}
+                            </a>
+                        </div>
+
                     </div>
+
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Atendimento Personalizado</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4">{t("personalized-service")}</h3>
                             <p className="text-gray-600">
-                                Focamos nas suas necessidades específicas, proporcionando um atendimento exclusivo e direcionado para resolver suas dúvidas.
+                                {t("consultancy-personalized-service-desc")}
                             </p>
                         </div>
 
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Soluções Práticas</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4"> {t("consultancy-practical-solutions")}</h3>
                             <p className="text-gray-600">
-                                Nossas orientações são claras e práticas, ideais para que você aplique imediatamente em sua mesa posta.
+                                {t("consultancy-practical-solutions-desc")}
                             </p>
                         </div>
 
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Apoio em Etiqueta Americana</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4"> {t("consultancy-american-etiquette")}</h3>
                             <p className="text-gray-600">
-                                Se você está iniciando ou deseja aprimorar suas habilidades em etiqueta à mesa, estamos aqui para ajudar.
+                                {t("consultancy-american-etiquette-desc")}
                             </p>
                         </div>
 
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Orientação Rápida</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4">{t("consultancy-guidance")}</h3>
                             <p className="text-gray-600">
-                                Com nossa consultoria, você receberá orientações rápidas que podem ser aplicadas de imediato.
+                                {t("consultancy-guidance-desc")}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-gray-100 py-12">
-                    <div className="container mx-auto px-6">
-                        <h2 className="text-2xl font-bold text-center text-customblue mb-8">Entre em Contato</h2>
-                        <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
-                            <div className="mb-4">
-                                <label htmlFor="name" className="block text-sm font-semibold mb-2">Nome</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                    className="border border-gray-300 p-2 rounded w-full"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="email" className="block text-sm font-semibold mb-2">Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="border border-gray-300 p-2 rounded w-full"
-                                />
-                            </div>
-                            <div className="mb-4">
-                                <label htmlFor="message" className="block text-sm font-semibold mb-2">Mensagem</label>
-                                <textarea
-                                    id="message"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    required
-                                    className="border border-gray-300 p-2 rounded w-full h-32"
-                                />
-                            </div>
-                            <button
+                <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+                    <div className="  md:w-1/2 container mx-auto px-6">
+                        <h2 className="text-2xl font-bold text-center text-customblue mb-8">{t("contact-me")}</h2>
+                        <form className="flex flex-col items-center gap-6 w-full bg-white p-8 rounded-xl shadow-lg text-customblue" onSubmit={handleSubmit}>
+                            <input
+                                className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                                type="text" placeholder="Seu nome" name="name" required value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                            <input
+                                className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                                type="email" placeholder="Seu email" name="email" required value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <textarea
+                                className='p-3 w-full h-32 rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                                placeholder="Sua mensagem" name="message" required value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                            ></textarea>
+
+                            <input
                                 type="submit"
-                                className="bg-customgold text-white p-2 rounded hover:bg-customrose transition-all duration-300"
-                            >
-                                Enviar Mensagem
-                            </button>
+                                value="Enviar mensagem"
+                                className='w-full md:w-1/2 p-3 text-customwhite bg-customgold hover:bg-opacity-90 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer'
+                            />
                         </form>
                     </div>
                 </div>
             </section>
 
             {/* Rodapé */}
-            <footer className={`bg-gray-100 w-screen text-customblue p-8 flex flex-col items-center justify-center gap-5`}>
-                <div className='flex'>
-                    <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
-                </div>
+            <footer className={`bg-gray-100 w-screen text-customblue p-8 flex flex-col items-center justify-center`}>
+                <p className='flex items-center text-center text-sm'><strong>RUTH ALMEIDA</strong></p>
+                <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
             </footer>
         </section>
     );

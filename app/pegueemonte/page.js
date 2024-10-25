@@ -89,82 +89,51 @@ const Montagem = () => {
             <div className='w-full bg-customwhite flex flex-col '>
                 {/* Botão do menu hambúrguer */}
                 <div className="flex justify-around items-center bg-customblue text-customwhite">
-                    <div className="flex flex-col justify-center md:flex-row md:justify-between ">
+                    <div className="flex flex-col justify-center md:flex-row md:justify-between">
                         {/* Botão para dispositivos móveis */}
                         <button
                             className="md:hidden block z-50"
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                         >
                             <IoMenu
-                                className={`text-3xl md:text-6xl ${isMenuOpen ? "text-customPurple" : "text-customRose"
-                                    }`}
+                                className={`text-3xl md:text-6xl ${isMenuOpen ? "text-customPurple" : "text-customRose"}`}
                             />
                         </button>
 
                         {/* Menu */}
                         <div
                             className={`${isMenuOpen && window.innerWidth < 768
-                                ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customRose"
+                                ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customblue text-white justify-center items-center"
                                 : "hidden"
                                 } md:flex flex-col md:gap-10 md:flex-row md:justify-between md:items-center text-sm w-full z-[20] h-8`}
                         >
-                            <a
-                                href="/"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                               Home
-                            </a>
-                            <a href="/mentoria"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Mentoria
-                            </a>
-                            <a
-                                href="/consultoria"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Consultoria
-                            </a>
-                            <a
-                                href="/montagem"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Montagem
-                            </a>
-                            <a
-                                href="/pegueemonte"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Pegue e Monte
-                            </a>
-                            <a
-                                href="/aluguel"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                className="hover:text-customgold transition-all duration-300"
-                            >
-                                Aluguel
-                            </a>
-
+                            {["home", "mentoria", "consultoria", "montagem", "pegueemonte", "aluguel", "contact"].map((item, index) => (
+                                <a
+                                    href={item.toLowerCase() === "home" ? "/" : `/${item}`}
+                                    key={index}
+                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                    className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}
+                                >
+                                    {t(item)}
+                                </a>
+                            ))}
                         </div>
+
                     </div>
 
                     {/* Div imagem e links sociais */}
                     <div className=''>
                         <div className="flex gap-6 py-8 justify-center md:gap-16">
-                            <a href='' target='_blank' rel="noopener noreferrer">
-                                <FaInstagram className='text-2xl' />
+                            <a href='https://www.instagram.com/ruthalmeida.mesaposta/' target='_blank' rel="noopener noreferrer">
+                                <FaInstagram className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
-                            <a href='' target='_blank' rel="noopener noreferrer">
-                                <FaWhatsapp className='text-2xl' />
+                            <a href='https://api.whatsapp.com/send?phone=14435381087' target='_blank' rel="noopener noreferrer">
+                                <FaWhatsapp className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
-
                         </div>
                     </div>
+
+                    {/* Seletor de idioma */}
                     <div className={`${playfairDisplay.className}`}>
                         <div className="">
                             <button
@@ -178,8 +147,8 @@ const Montagem = () => {
                                     className="rounded" />
                             </button>
                             {isOpen && (
-                                <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50 ">
-                                    <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg "
+                                <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50">
+                                    <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg"
                                         onClick={() => handleLanguageChange('br')}>
                                         <Image
                                             src="/images/brasil.png"
@@ -189,8 +158,8 @@ const Montagem = () => {
                                         />
                                         <span className="ml-1 text-xs p-2 mr-4">PT</span>
                                     </li>
-                                    <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer "
-                                        onClick={() => handleLanguageChange('eua')} >
+                                    <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer"
+                                        onClick={() => handleLanguageChange('eua')}>
                                         <Image
                                             src="/images/eua.png"
                                             width={20}
@@ -208,20 +177,10 @@ const Montagem = () => {
 
             <section className="bg-customwhite text-customblack pt-12">
                 <div className="container mx-auto px-6">
-                    <div className="flex justify-center items-center gap-32 mb-10 py-12">
-                        <div>
-                            <h2 className={`text-3xl font-bold text-customblue mb-6 text-center ${playfairDisplay.className}`}>
-                                Pegue e Monte Sua Mesa Posta
-                            </h2>
-
-                            <p className="text-lg text-center text-gray-700 mb-10 max-w-2xl mx-auto">
-                                Receba na sua casa uma caixa com um kit completo de Mesa Posta para sua ocasião especial, incluindo instruções passo a passo para que sua mesa fique impecável.
-                            </p>
-                        </div>
-
-                        <div className="flex justify-center items-center">
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-10 mb-10 py-12">
+                        <div className="flex justify-center items-center mb-6 md:mb-0">
                             <Image
-                                src="/images/pegueemonte.png" 
+                                src="/images/pegueemonte.png"
                                 alt="Kit Pegue e Monte"
                                 width={200}
                                 height={200}
@@ -229,94 +188,89 @@ const Montagem = () => {
                                 quality={80}
                             />
                         </div>
+                        <div className="text-center">
+                            <h2 className={`text-3xl font-bold text-customblue mb-6 ${playfairDisplay.className}`}>
+                                {t('title-take-and-mount')}
+                            </h2>
+                            <p className="text-lg text-center text-gray-700 mb-10 max-w-2xl mx-auto">
+                                {t('take-and-mount-desc')}
+                            </p>
+                            <a href="https://api.whatsapp.com/send?phone=14435381087&text=Olá!%20Estou%20interessado%20em%20receber%20o%20kit%20completo%20de%20Mesa%20Posta.%0AHi!%20I'm%20interested%20in%20receiving%20the%20complete%20table%20setting%20kit." className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
+                                {t('take-and-mount-button')}
+                            </a>
+                        </div>
+
                     </div>
+
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Peças Completas para Mesa Posta</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4">{t('take-and-mount-parts')}</h3>
                             <p className="text-gray-600">
-                                Receba em sua casa todas as peças necessárias para montar uma mesa perfeita, incluindo pratos, talheres, copos, taças e acessórios decorativos.
+                                {t('take-and-mount-parts-desc')}
                             </p>
                         </div>
 
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Guia Virtual e Fotos de Referência</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4">{t('take-and-mount-virtual-guide')}</h3>
                             <p className="text-gray-600">
-                                Tenha acesso a um manual virtual que explica como montar sua mesa posta de maneira elegante, com fotos de referência para inspirar seu estilo.
+                                {t('take-and-mount-virtual-guide-desc')}
                             </p>
                         </div>
 
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Variedade de Estilos e Cores</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4">{t('take-and-mount-variety')}</h3>
                             <p className="text-gray-600">
-                                Escolha entre uma variedade de estilos de mesa posta e paletas de cores para diferentes ocasiões, desde jantares formais até eventos mais descontraídos.
+                                {t('take-and-mount-variety-desc')}
                             </p>
                         </div>
 
                         <div className="bg-customwhite p-6 rounded-lg shadow-lg hover:shadow-custom transition-shadow duration-300">
-                            <h3 className="text-xl font-semibold text-customgold mb-4">Entrega Conveniente</h3>
+                            <h3 className="text-xl font-semibold text-customgold mb-4">{t('take-and-mount-delivery')}</h3>
                             <p className="text-gray-600">
-                                Receba tudo que precisa para a sua mesa posta diretamente na sua casa, sem preocupações com transporte e compras.
+                                {t('take-and-mount-delivery-desc')}
                             </p>
                         </div>
                     </div>
 
+                </div>
+                <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+                    <div className="  md:w-1/2 container mx-auto px-6">
+                        <h2 className="text-2xl font-bold text-center text-customblue mb-8">{t('contact-me')}</h2>
+                        <form className="flex flex-col items-center gap-6 w-full bg-white p-8 rounded-xl shadow-lg text-customblue" onSubmit={handleSubmit}>
+                            <input
+                                className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                                type="text" placeholder="Seu nome" name="name" required value={name}
+                                onChange={(e) => setName(e.target.value)}
+                            />
+                            <input
+                                className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                                type="email" placeholder="Seu email" name="email" required value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <textarea
+                                className='p-3 w-full h-32 rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
+                                placeholder="Sua mensagem" name="message" required value={message}
+                                onChange={(e) => setMessage(e.target.value)}
+                            ></textarea>
 
-                    <div className="bg-gray-100 py-12">
-                        <div className="container mx-auto px-6">
-                            <h2 className="text-2xl font-bold text-center text-customblue mb-8">Entre em Contato</h2>
-                            <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
-                                <div className="mb-4">
-                                    <label htmlFor="name" className="block text-sm font-semibold mb-2">Nome</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
-                                        required
-                                        className="border border-gray-300 p-2 rounded w-full"
-                                    />
-                                </div>
-                                <div className="mb-4">
-                                    <label htmlFor="email" className="block text-sm font-semibold mb-2">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        required
-                                        className="border border-gray-300 p-2 rounded w-full"
-                                    />
-                                </div>
-                                <div className="mb-4">
-                                    <label htmlFor="message" className="block text-sm font-semibold mb-2">Mensagem</label>
-                                    <textarea
-                                        id="message"
-                                        value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
-                                        required
-                                        className="border border-gray-300 p-2 rounded w-full h-32"
-                                    />
-                                </div>
-                                <button
-                                    type="submit"
-                                    className="bg-customgold text-white p-2 rounded hover:bg-customrose transition-all duration-300"
-                                >
-                                    Enviar Mensagem
-                                </button>
-                            </form>
-                        </div>
+                            <input
+                                type="submit"
+                                value="Enviar mensagem"
+                                className='w-full md:w-1/2 p-3 text-customwhite bg-customgold hover:bg-opacity-90 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ease-in-out cursor-pointer'
+                            />
+                        </form>
                     </div>
                 </div>
+
             </section>
 
 
 
             {/* Rodapé */}
-            <footer className={`bg-gray-100 w-screen text-customblue p-8 flex flex-col items-center justify-center gap-5`}>
-                <div className='flex'>
-                    <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
-                </div>
+            <footer className={`bg-gray-100 w-screen text-customblue p-8 flex flex-col items-center justify-center`}>
+                <p className='flex items-center text-center text-sm'><strong>RUTH ALMEIDA</strong></p>
+                <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
             </footer>
         </section>
     );

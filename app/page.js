@@ -10,7 +10,7 @@ import { Montserrat, Playfair_Display } from 'next/font/google';
 import '../next-i18next.config.js';
 
 
-import { FaGithub, FaInstagram, FaRegCopyright } from "react-icons/fa6";
+import { FaGithub, FaInstagram, FaRegCopyright, FaWhatsapp } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 
 const montserrat = Montserrat({
@@ -94,92 +94,54 @@ export default function Home() {
       {isLanguageLoaded ? (
         <section className={`flex flex-col md:min-h-screen md:max-w-screen max-w-scren text-customblue ${montserrat.className}`}>
 
-          <div className='w-full bg-customwhite flex flex-col '>
+          <div className='w-full bg-customwhite flex flex-col'>
             {/* Botão do menu hambúrguer */}
             <div className="flex justify-around items-center bg-customblue text-customwhite">
-              <div className="flex flex-col justify-center md:flex-row md:justify-beetween ">
+              <div className="flex flex-col justify-center md:flex-row md:justify-between">
                 {/* Botão para dispositivos móveis */}
                 <button
                   className="md:hidden block z-50"
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                   <IoMenu
-                    className={`text-3xl md:text-6xl ${isMenuOpen ? "text-customPurple" : "text-customRose"
-                      }`}
+                    className={`text-3xl md:text-6xl ${isMenuOpen ? "text-customPurple" : "text-customRose"}`}
                   />
                 </button>
 
                 {/* Menu */}
                 <div
                   className={`${isMenuOpen && window.innerWidth < 768
-                    ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customRose"
+                    ? "flex w-full h-screen fixed top-0 left-0 gap-5 bg-customblue text-white justify-center items-center"
                     : "hidden"
                     } md:flex flex-col md:gap-10 md:flex-row md:justify-between md:items-center text-sm w-full z-[20] h-8`}
                 >
-                  <a
-                    href="/"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    {t("about-me")}
-                  </a>
-                  <a href="/mentoria"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    Mentoria
-                  </a>
-                  <a
-                    href="/consultoria"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    Consultoria
-                  </a>
-                  <a
-                    href="/montagem"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    Montagem
-                  </a>
-                  <a
-                    href="/pegueemonte"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    Pegue e Monte
-                  </a>
-                  <a
-                    href="/aluguel"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    Aluguel
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="hover:text-customgold transition-all duration-300"
-                  >
-                    Contatos
-                  </a>
+                  {["home", "mentoria", "consultoria", "montagem", "pegueemonte", "aluguel", "contact"].map((item, index) => (
+                    <a
+                      href={item.toLowerCase() === "home" ? "/" : `/${item}`}
+                      key={index}
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}
+                    >
+                      {t(item)}
+                    </a>
+                  ))}
                 </div>
-              </div>
 
+              </div>
 
               {/* Div imagem e links sociais */}
               <div className=''>
                 <div className="flex gap-6 py-8 justify-center md:gap-16">
-                  <a href='' target='_blank' rel="noopener noreferrer">
-                    <FaGithub className='text-2xl' />
+                  <a href='https://www.instagram.com/ruthalmeida.mesaposta/' target='_blank' rel="noopener noreferrer">
+                    <FaInstagram className='text-2xl hover:text-customgold transition-all duration-300' />
                   </a>
-                  <a href='' target='_blank' rel="noopener noreferrer">
-                    <FaInstagram className='text-2xl' />
+                  <a href='https://api.whatsapp.com/send?phone=14435381087' target='_blank' rel="noopener noreferrer">
+                    <FaWhatsapp className='text-2xl hover:text-customgold transition-all duration-300' />
                   </a>
-
                 </div>
               </div>
+
+              {/* Seletor de idioma */}
               <div className={`${playfairDisplay.className}`}>
                 <div className="">
                   <button
@@ -193,8 +155,8 @@ export default function Home() {
                       className="rounded" />
                   </button>
                   {isOpen && (
-                    <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50 ">
-                      <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg "
+                    <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50">
+                      <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg"
                         onClick={() => handleLanguageChange('br')}>
                         <Image
                           src="/images/brasil.png"
@@ -204,8 +166,8 @@ export default function Home() {
                         />
                         <span className="ml-1 text-xs p-2 mr-4">PT</span>
                       </li>
-                      <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer "
-                        onClick={() => handleLanguageChange('eua')} >
+                      <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer"
+                        onClick={() => handleLanguageChange('eua')}>
                         <Image
                           src="/images/eua.png"
                           width={20}
@@ -227,45 +189,44 @@ export default function Home() {
               backgroundSize: "cover",
               backgroundPosition: "center"
             }}>
-              {/* ruth almeida */}
+              {/* Ruth Almeida */}
               <div className='flex flex-col items-center justify-center w-full mt-5 p-1 text-customwhite text-6xl text-center'>
-                <h1>RUTH ALMEIDA </h1>
-                <p className={`${playfairDisplay.className} text-2xl`}>Mesa posta, etiqueta na América e reconexão familiar</p>
+                <h1>RUTH ALMEIDA</h1>
+                <p className={`${playfairDisplay.className} text-2xl`}>{t("subtitle")}</p>
               </div>
-
             </div>
-            {/* div descrição */}
-            <div className='flex justify-center items-center gap-20 w-full md:w-full text-sm animate-fade-in-up h-screen'
-              style={{
-                backgroundImage: "url('images/about-me.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center"
-              }}>
-              <div className='w-1/2 py-12 '>
-                <h2 className='text-4xl mb-6'>Sobre mim:</h2>
-                <p className='text-sm md:text-md md:mb-2 mb-4 leading-relaxed'>
-                  Sou apaixonada por criar momentos especiais à mesa e acredito que a conexão familiar começa nos pequenos detalhes. Como especialista em Mesa Posta e etiqueta, meu objetivo é ajudar famílias a se reconectarem, valorizando o tempo e o cuidado ao preparar uma refeição. Através da etiqueta à mesa e de ensinamentos sobre as tradições da cultura americana, ofereço uma abordagem que mistura elegância e funcionalidade, tornando o dia a dia mais especial.
+
+            {/* Div descrição */}
+            <div className='flex flex-col md:flex-row justify-center items-center gap-10 w-full text-sm animate-fade-in-up pt-24  p-5 md:p-10' style={{
+              backgroundImage: "url('images/about-me.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}>
+              <div className='w-full md:w-1/2'>
+                <h2 className='text-4xl mb-6'>{t("about-me")}</h2>
+                <p className='text-sm md:text-md mb-4 leading-relaxed'>
+                  {t("description-pt1")}
                 </p>
                 <p className='text-sm md:text-md mb-2 leading-relaxed'>
-                  Combinando tradição e modernidade, ensino como transformar refeições em experiências significativas, fortalecendo laços familiares e criando memórias ao redor da mesa. Quer seja um jantar formal ou um encontro casual, acredito que o ato de reunir a família, com atenção aos detalhes e às boas maneiras, é o primeiro passo para uma convivência mais harmoniosa.
+                  {t("description-pt2")}
                 </p>
                 <p className='text-sm md:text-md leading-relaxed'>
-                  Venha comigo nessa jornada para redescobrir o prazer de estar à mesa com quem você ama!
+                  {t("description-pt3")}
                 </p>
               </div>
-              <div className='w-auto flex justify-center items-center py-12'>
-                <img src="images/ruth-main.jpg" className=' w-60 h-auto rounded-md shadow-custom'></img>
+              <div className='w-full md:w-auto flex justify-center items-center py-5'>
+                <Image src="/images/ruth-main.jpg" alt="Ruth Main" width={240} height={360} className='w-60 h-auto rounded-md shadow-custom' />
               </div>
             </div>
 
 
 
             {/* div serviços */}
-            <div className='text-center max-w-full min-h-screen bg-customblue p-12 pb-10'
+            <div className='text-center max-w-full lg:min-h-screen bg-customblue p-12 md:pb-10 flex flex-col justify-center items-center' id="services-section"
 
             >
               <h2 className={`text-3xl font-semibold text-center mb-10 md:text-4xl text-customwhite ${playfairDisplay.className}`}>
-                Meus Serviços
+                {t("my-services")}
               </h2>
 
               {<Carousel />}
@@ -274,59 +235,112 @@ export default function Home() {
 
             {/* div ebook */}
             <div className='text-center p-12'>
-              <div className=" flex flex-col md:flex-row md: justify-around items-center gap-8 text-center md:text-left md:min-h-screen bg-customwhite" id="ebook-section">
-                <div className="md:w-auto flex justify-center items-start md:justify-center">
-                  <img src="/images/ebook.png" alt="E-book sobre Mesa Posta" className="w-full max-w-sm md:max-w-md rounded-lg shadow-lg" />
-                </div>
-
-                <div className="md:w-1/2 space-y-6">
-                  <h2 className={`text-3xl md:text-4xl font-semibold ${playfairDisplay.className} text-customblue`}>
-                    Descubra como reconectar sua família e criar momentos inesquecíveis com a Mesa Posta
-                  </h2>
-
-                  <p className="text-lg text-customblack font-light">
-                    <strong>Você já sentiu que...</strong>
-                  </p>
-                  <ul className="list-inside list-disc space-y-2 text-left mx-auto text-customblack ml-5">
-                    <li>A conexão familiar se perdeu e os momentos à mesa praticamente desapareceram?</li>
-                    <li>Não sabe como montar uma mesa posta elegante e funcional?</li>
-                    <li>Se sente insegura ao participar de eventos em que a maioria das pessoas segue as regras de etiqueta americanas?</li>
-                  </ul>
-
-                  <p className="text-lg font-light text-customblack">
-                    Eu já passei por isso também, e foi essa experiência que me motivou a criar algo especial para você.
-                  </p>
-
-                  <h3 className="text-xl font-semibold text-customblue">Quero te dar um presente!</h3>
-
-                  <p className="text-lg text-customblack font-light">
-                    Baixe agora meu <strong>eBook gratuito</strong> e aprenda tudo sobre <strong>Mesa Posta</strong> e como ela pode ajudar a trazer de volta aqueles momentos valiosos com sua família. Esse manual simples e prático vai te guiar no processo de transformar suas refeições em verdadeiros encontros memoráveis.
-                  </p>
-
-                  <div className="flex justify-center md:justify-start">
+              <div className='shadow-lg  p-12'>
+                <div className="flex flex-col md:flex-row justify-around items-center gap-8 text-center md:text-left md:min-h-screen bg-customwhite" id="ebook">
+                  <div className="md:w-auto flex justify-center items-start md:justify-center">
+                    <img src="/images/ebook.png" alt="E-book sobre Mesa Posta" className="w-full max-w-sm md:max-w-md rounded-lg shadow-lg" />
                   </div>
+
+                  <div className="md:w-1/2 space-y-6">
+                    <h2 className={`text-3xl md:text-4xl font-semibold ${playfairDisplay.className} text-customblue`}>
+                      {t("ebook-title")}
+                    </h2>
+
+                    <p className="text-lg text-customblack font-light">
+                      <strong>{t("ebook-1")}</strong>
+                    </p>
+                    <ul className="list-inside list-disc space-y-2 text-left mx-auto text-customblack ml-5">
+                      <li>{t("ebook-2")}</li>
+                      <li>{t("ebook-3")}</li>
+                      <li>{t("ebook-4")}</li>
+                    </ul>
+
+                    <p className="text-lg font-light text-customblack">
+                      {t("ebook-5")}
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-customblue">{t("ebook-6")}</h3>
+
+                    <p className="text-lg text-customblack font-light">
+                      {t("desc-ebook-1")} <strong>{t("ebook-free")}</strong> {t("desc-ebook-2")} <strong>{t("table-setting")}</strong> {t("desc-ebook-3")}
+                    </p>
+                  </div>
+
+
+                  
                 </div>
+                  <div className="my-10">
+                    <a href="https://ruthalmeida1247.systeme.io/ebookruthalmeida" className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                      {t("download-ebook")}
+                    </a>
+                  </div>
               </div>
-              <button className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300">
-                Baixar E-Book
-              </button>
+
+              {/* Divisão com sombra entre seções */}
+              <div className="mt-16" />
+
+              {/* Nova seção para o livro "Projeto Mulheres Extraordinárias" */}
+              <div className='shadow-lg  p-12'>
+              <div className="flex flex-col md:flex-row justify-around items-center gap-8 mt-6 bg-customwhite rounded-lg ">
+                <div className="md:w-1/3 flex justify-center">
+                  <img src="/images/book.jpg" alt="Projeto Mulheres Extraordinárias" className="w-full max-w-xs rounded-lg shadow-lg" />
+                </div>
+
+                <div className="md:w-2/3 space-y-4 text-left">
+                  <h2 className="text-2xl font-semibold text-customblue">{t('extra-project-title')}</h2>
+                  <p className="text-lg text-customblack font-light">
+                    <strong>{t('extra-project-empower')}</strong>
+                  </p>
+                  <p className="text-lg text-customblack font-light">
+                    {t('extra-project-description')}
+                  </p>
+                  <p className="text-lg text-customblack font-light">
+                    {t('extra-project-collection')}
+                  </p>
+                  <p className="text-lg text-customblack font-light">
+                    <strong>{t('extra-project-why-read')}</strong>
+                  </p>
+                  <ul className="list-inside list-disc ml-5 text-lg text-customblack font-light">
+                    <li>{t('extra-project-inspiration')}</li>
+                    <li>{t('extra-project-empowerment')}</li>
+                    <li>{t('extra-project-connection')}</li>
+                  </ul>
+                  <p className="text-lg text-customblack font-light">
+                    {t('extra-project-join')}
+                  </p>
+                  {/* Botão do livro com margens adequadas */}
+                </div>
+
+              </div>
+                  <div className="my-10">
+                    <a href="https://p.eduzz.com/2355119?a=607065028" className="px-8 py-3 mt-10 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target='_blank'>
+                      {t('extra-project-button')}
+                    </a>
+                  </div>
+                  </div>
             </div>
 
 
 
-            <div id='contact' className='flex items-center justify-center w-full gap-20 p-12 bg-customblue text-customwhite md:min-h-screen'>
+
+
+
+
+
+            <div id='contact' className='flex flex-col md:flex-row items-center justify-center w-full gap-12 p-12 bg-customblue text-customwhite md:min-h-screen'>
               {/* Título da seção */}
-              <div className='w-1/3'>
+              <div className='w-full md:w-1/3'>
                 <h2 className={`text-3xl font-semibold text-center mb-4 md:text-4xl ${playfairDisplay.className}`}>
-                  Fale comigo
+                  {t("contact-me")}
                 </h2>
                 {/* Subtítulo explicativo */}
                 <p className='text-lg text-center mb-8 max-w-2xl'>
-                  Caso deseje esclarecer dúvidas, agendar uma mentoria ou discutir como posso ajudar a reconectar sua família através da Mesa Posta, preencha o formulário abaixo. Responderei o mais breve possível.
-                </p></div>
+                  {t("text-contact")}
+                </p>
+              </div>
 
               {/* Formulário de contato */}
-              <form className="flex flex-col items-center gap-6 w-full md:w-1/2 bg-white p-8 rounded-xl shadow-lg" onSubmit={handleSubmit}>
+              <form className="flex flex-col items-center gap-6 w-full md:w-1/2 bg-white p-8 rounded-xl shadow-lg text-customblue" onSubmit={handleSubmit}>
                 <input
                   className='p-3 w-full rounded-lg border border-transparent focus:border-customgold focus:ring focus:ring-customgold focus:outline-none transition-all duration-300 ease-in-out'
                   type="text" placeholder="Seu nome" name="name" required value={name}
@@ -352,19 +366,20 @@ export default function Home() {
             </div>
 
 
+
             {/* Rodapé */}
-            <footer className={` w-screen text-customblue p-8 flex flex-col items-center justify-center gap-5`}>
-              <div className='flex'>
-                <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
-              </div>
+            <footer className={`bg-gray-100 w-screen text-customblue p-8 flex flex-col items-center justify-center`}>
+              <p className='flex items-center text-center text-sm'><strong>RUTH ALMEIDA</strong></p>
+              <p className='flex items-center text-center text-sm'>Copyright 2024. <FaRegCopyright className='mx-1' /> {t('copy')}.</p>
             </footer>
           </div>
-        </section>
+        </section >
 
 
       ) : (
-        <p className='h-screen w-screen flex justify-center items-center bg-customblue text-white'>Loading...</p> // Exibe isso enquanto o idioma não estiver carregado
-      )}
+        <p className='h-screen w-screen flex justify-center items-center bg-customblue text-white'>{t('loading')}</p> // Exibe isso enquanto o idioma não estiver carregado
+      )
+      }
     </>
   );
 } 

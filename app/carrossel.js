@@ -12,23 +12,23 @@ const Carousel = () => {
   const projects = [
     {
       image: "/images/carrossel1.png",
-      link: "/"
+      link: "/mentoria"
     },
     {
       image: "/images/carrossel2.png",
-      link: ""
+      link: "/consultoria"
     },
     {
       image: "/images/carrossel3.png",
-      link: ""
+      link: "/montagem"
     },
     {
       image: "/images/c4.png",
-      link: ""
+      link: "/pegueemonte"
     },
     {
       image: "/images/carrossel5.png",
-      link: ""
+      link: "/aluguel"
     }
   ];
 
