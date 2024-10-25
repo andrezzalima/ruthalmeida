@@ -107,7 +107,7 @@ const Montagem = () => {
                                 : "hidden"
                                 } md:flex flex-col md:gap-10 md:flex-row md:justify-between md:items-center text-sm w-full z-[20] h-8`}
                         >
-                            {["home", "mentoria", "consultoria", "montagem", "pegueemonte", "aluguel", "contact"].map((item, index) => (
+                            {["home", "mentoring", "consulting", "setup", "pikup", "rent", "contact"].map((item, index) => (
                                 <a
                                     href={item.toLowerCase() === "home" ? "/" : `/${item}`}
                                     key={index}
