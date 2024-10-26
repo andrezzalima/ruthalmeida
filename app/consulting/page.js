@@ -138,7 +138,7 @@ const Consultoria = () => {
                                 className="flex items-center bg-transparent hover:cursor-pointer"
                                 onClick={toggleDropdown}
                             >
-                                <Image src={language === 'br' ? '/images/brasil.png' : '/images/eua.png'}
+                                <Image src={language === 'br' ? '/images/br.png' : '/images/eua.png'}
                                     alt={language === 'br' ? 'BR' : 'EUA'}
                                     width={30}
                                     height={30}
@@ -149,7 +149,7 @@ const Consultoria = () => {
                                     <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg "
                                         onClick={() => handleLanguageChange('br')}>
                                         <Image
-                                            src="/images/brasil.png"
+                                            src="/images/br.png"
                                             width={20}
                                             height={20}
                                             alt="BR"

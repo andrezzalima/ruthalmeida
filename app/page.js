@@ -148,18 +148,18 @@ export default function Home() {
                     className="flex items-center bg-transparent hover:cursor-pointer"
                     onClick={toggleDropdown}
                   >
-                    <Image src={language === 'br' ? '/images/brasil.png' : '/images/eua.png'}
+                    <Image src={language === 'br' ? '/images/br.png' : '/images/eua.png'}
                       alt={language === 'br' ? 'BR' : 'EUA'}
                       width={30}
                       height={30}
-                      className="rounded" />
+                      className="rounded-full" />
                   </button>
                   {isOpen && (
                     <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50">
                       <li className="flex items-center p-2 hover:bg-gray-200 cursor-pointer rounded-t-lg"
                         onClick={() => handleLanguageChange('br')}>
                         <Image
-                          src="/images/brasil.png"
+                          src="/images/br.png"
                           width={20}
                           height={20}
                           alt="BR"
@@ -377,7 +377,7 @@ export default function Home() {
 
 
       ) : (
-        <p className='h-screen w-screen flex justify-center items-center bg-customblue text-white'>{t('loading')}</p> // Exibe isso enquanto o idioma não estiver carregado
+        <p className='h-screen w-screen flex justify-center items-center bg-customblue text-white'>Loading...</p> // Exibe isso enquanto o idioma não estiver carregado
       )
       }
     </>
