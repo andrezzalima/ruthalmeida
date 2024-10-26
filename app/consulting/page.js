@@ -108,7 +108,7 @@ const Consultoria = () => {
                         >
                             {["home", "mentoring", "consulting", "setup", "pikup", "rent", "contact"].map((item, index) => (
                                 <a
-                                    href={item.toLowerCase() === "home" ? "/" : item.toLowerCase() === "contact" ? "#contact" : `/${item}`}
+                                    href={item.toLowerCase() === "home" ? "/" : item.toLowerCase() === "contact" ? "/consulting#contact" : `/${item}`}
                                     key={index}
                                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                                     className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}
@@ -232,7 +232,7 @@ const Consultoria = () => {
                     </div>
                 </div>
 
-                <div className="bg-gray-100 min-h-screen flex items-center justify-center" id="#contact">
+                <div className="bg-gray-100 min-h-screen flex items-center justify-center" id="contact">
                     <div className="  md:w-1/2 container mx-auto px-6">
                         <h2 className="text-2xl font-bold text-center text-customblue mb-8">{t("contact-me")}</h2>
                         <form className="flex flex-col items-center gap-6 w-full bg-white p-8 rounded-xl shadow-lg text-customblue" onSubmit={handleSubmit}>

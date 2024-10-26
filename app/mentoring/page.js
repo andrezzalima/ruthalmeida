@@ -227,7 +227,7 @@ const Mentoria = () => {
 
                     </div>
                 </div>
-                <div className="bg-gray-100 min-h-screen flex items-center justify-center" id="#contact">
+                <div className="bg-gray-100 min-h-screen flex items-center justify-center" id="contact">
                     <div className="  md:w-1/2 container mx-auto px-6">
                         <h2 className="text-2xl font-bold text-center text-customblue mb-8">{t("contact-me")}</h2>
                         <form className="flex flex-col items-center gap-6 w-full bg-white p-8 rounded-xl shadow-lg text-customblue" onSubmit={handleSubmit}>
