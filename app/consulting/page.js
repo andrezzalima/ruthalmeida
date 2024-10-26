@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Montserrat, Playfair_Display } from 'next/font/google';
 import '../../next-i18next.config.js';
 
-import { FaGithub, FaInstagram, FaRegCopyright, FaWhatsapp } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaRegCopyright, FaWhatsapp } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
 
 const montserrat = Montserrat({
@@ -129,7 +129,9 @@ const Consultoria = () => {
                             <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaWhatsapp className='text-2xl' />
                             </a>
-
+                            <a href='https://www.facebook.com/profile.php?id=61564836491857&mibextid=LQQJ4d' target='_blank' rel="noopener noreferrer">
+                                <FaFacebook className='text-2xl hover:text-customgold transition-all duration-300' />
+                            </a>
                         </div>
                     </div>
                     <div className={`${playfairDisplay.className}`}>
