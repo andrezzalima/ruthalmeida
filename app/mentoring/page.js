@@ -148,7 +148,7 @@ const Mentoria = () => {
                                     alt={language === 'br' ? 'BR' : 'EUA'}
                                     width={30}
                                     height={30}
-                                    className="rounded" />
+                                    className="rounded-full" />
                             </button>
                             {isOpen && (
                                 <ul className="absolute right-0 top-8 rounded-lg bg-slate-700/70 z-10 text-emerald-50 ">
