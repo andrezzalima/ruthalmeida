@@ -65,23 +65,24 @@ const Mentoria = () => {
 
     const { t, i18n } = useTranslation();
     const [language, setLanguage] = useState('br');
+    const [isLoading, setIsLoading] = useState(true);
     const [isLanguageLoaded, setIsLanguageLoaded] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
+
     useEffect(() => {
-        i18n.changeLanguage(language, () => {
-            setIsLanguageLoaded(true);
-        });
-    }, [i18n, language]);
+        const loadLanguage = async () => {
+            await i18n.changeLanguage(language);
+            setIsLoading(false);
+        };
+        loadLanguage();
+    }, [language, i18n]);
 
     const handleLanguageChange = (value) => {
         setLanguage(value);
-        setIsLanguageLoaded(false);
-        i18n.changeLanguage(value, () => {
-            setIsLanguageLoaded(true);
-        });
-        setIsOpen(false);
+        setIsLoading(true);
     };
+
     const toggleDropdown = () => setIsOpen(!isOpen);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -112,7 +113,7 @@ const Mentoria = () => {
                         >
                             {["home", "mentoring", "consulting", "setup", "pikup", "rent", "contact"].map((item, index) => (
                                 <a
-                                    href={item.toLowerCase() === "home" ? "/" : `/${item}`}
+                                    href={item.toLowerCase() === "home" ? "/" : item.toLowerCase() === "contact" ? "#contact" : `/${item}`}
                                     key={index}
                                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                                     className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}

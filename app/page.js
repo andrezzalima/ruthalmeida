@@ -1,7 +1,8 @@
 "use client";
 
 import './globals.css';
-import Carousel from "./carrossel";
+import CarouselBr from "./carrossel-br";
+import CarouselEua from "./carrossel-eua";
 import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
@@ -117,7 +118,7 @@ export default function Home() {
                 >
                   {["home", "mentoring", "consulting", "setup", "pikup", "rent", "contact"].map((item, index) => (
                     <a
-                      href={item.toLowerCase() === "home" ? "/" : `/${item}`}
+                      href={item.toLowerCase() === "home" ? "/" : item.toLowerCase() === "contact" ? "#contact" : `/${item}`}
                       key={index}
                       onClick={() => setIsMenuOpen(!isMenuOpen)}
                       className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}
@@ -164,7 +165,7 @@ export default function Home() {
                           height={20}
                           alt="BR"
                         />
-                        <span className="ml-1 text-xs p-2 mr-4">PT</span>
+                        <span className="ml-1 text-xs p-2 mr-4">BR</span>
                       </li>
                       <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer"
                         onClick={() => handleLanguageChange('eua')}>
@@ -174,7 +175,7 @@ export default function Home() {
                           height={20}
                           alt="EUA"
                         />
-                        <span className="ml-1 text-xs p-2">EN</span>
+                        <span className="ml-1 text-xs p-2">EUA</span>
                       </li>
                     </ul>
                   )}
@@ -229,7 +230,7 @@ export default function Home() {
                 {t("my-services")}
               </h2>
 
-              {<Carousel />}
+              {language === 'br' ? <CarouselBr /> : <CarouselEua />}
 
             </div>
 
@@ -267,13 +268,13 @@ export default function Home() {
                   </div>
 
 
-                  
+
                 </div>
-                  <div className="my-10">
-                    <a href="https://ruthalmeida1247.systeme.io/ebookruthalmeida" className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target="_blank" rel="noopener noreferrer">
-                      {t("download-ebook")}
-                    </a>
-                  </div>
+                <div className="my-10">
+                  <a href="https://ruthalmeida1247.systeme.io/ebookruthalmeida" className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                    {t("download-ebook")}
+                  </a>
+                </div>
               </div>
 
               {/* Divisão com sombra entre seções */}
@@ -281,43 +282,43 @@ export default function Home() {
 
               {/* Nova seção para o livro "Projeto Mulheres Extraordinárias" */}
               <div className='shadow-lg  p-12'>
-              <div className="flex flex-col md:flex-row justify-around items-center gap-8 mt-6 bg-customwhite rounded-lg ">
-                <div className="md:w-1/3 flex justify-center">
-                  <img src="/images/book.jpg" alt="Projeto Mulheres Extraordinárias" className="w-full max-w-xs rounded-lg shadow-lg" />
-                </div>
+                <div className="flex flex-col md:flex-row justify-around items-center gap-8 mt-6 bg-customwhite rounded-lg ">
+                  <div className="md:w-1/3 flex justify-center">
+                    <img src="/images/book.jpg" alt="Projeto Mulheres Extraordinárias" className="w-full max-w-xs rounded-lg shadow-lg" />
+                  </div>
 
-                <div className="md:w-2/3 space-y-4 text-left">
-                  <h2 className="text-2xl font-semibold text-customblue">{t('extra-project-title')}</h2>
-                  <p className="text-lg text-customblack font-light">
-                    <strong>{t('extra-project-empower')}</strong>
-                  </p>
-                  <p className="text-lg text-customblack font-light">
-                    {t('extra-project-description')}
-                  </p>
-                  <p className="text-lg text-customblack font-light">
-                    {t('extra-project-collection')}
-                  </p>
-                  <p className="text-lg text-customblack font-light">
-                    <strong>{t('extra-project-why-read')}</strong>
-                  </p>
-                  <ul className="list-inside list-disc ml-5 text-lg text-customblack font-light">
-                    <li>{t('extra-project-inspiration')}</li>
-                    <li>{t('extra-project-empowerment')}</li>
-                    <li>{t('extra-project-connection')}</li>
-                  </ul>
-                  <p className="text-lg text-customblack font-light">
-                    {t('extra-project-join')}
-                  </p>
-                  {/* Botão do livro com margens adequadas */}
-                </div>
+                  <div className="md:w-2/3 space-y-4 text-left">
+                    <h2 className="text-2xl font-semibold text-customblue">{t('extra-project-title')}</h2>
+                    <p className="text-lg text-customblack font-light">
+                      <strong>{t('extra-project-empower')}</strong>
+                    </p>
+                    <p className="text-lg text-customblack font-light">
+                      {t('extra-project-description')}
+                    </p>
+                    <p className="text-lg text-customblack font-light">
+                      {t('extra-project-collection')}
+                    </p>
+                    <p className="text-lg text-customblack font-light">
+                      <strong>{t('extra-project-why-read')}</strong>
+                    </p>
+                    <ul className="list-inside list-disc ml-5 text-lg text-customblack font-light">
+                      <li>{t('extra-project-inspiration')}</li>
+                      <li>{t('extra-project-empowerment')}</li>
+                      <li>{t('extra-project-connection')}</li>
+                    </ul>
+                    <p className="text-lg text-customblack font-light">
+                      {t('extra-project-join')}
+                    </p>
+                    {/* Botão do livro com margens adequadas */}
+                  </div>
 
+                </div>
+                <div className="my-10">
+                  <a href="https://p.eduzz.com/2355119?a=607065028" className="px-8 py-3 mt-10 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target='_blank'>
+                    {t('extra-project-button')}
+                  </a>
+                </div>
               </div>
-                  <div className="my-10">
-                    <a href="https://p.eduzz.com/2355119?a=607065028" className="px-8 py-3 mt-10 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target='_blank'>
-                      {t('extra-project-button')}
-                    </a>
-                  </div>
-                  </div>
             </div>
 
 

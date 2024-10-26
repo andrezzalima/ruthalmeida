@@ -108,7 +108,7 @@ const Montagem = () => {
                         >
                             {["home", "mentoring", "consulting", "setup", "pikup", "rent", "contact"].map((item, index) => (
                                 <a
-                                    href={item.toLowerCase() === "home" ? "/" : `/${item}`}
+                                    href={item.toLowerCase() === "home" ? "/" : item.toLowerCase() === "contact" ? "#contact" : `/${item}`}
                                     key={index}
                                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                                     className={`hover:bg-customgold hover:bg-opacity-50 transition-all duration-300 p-2 rounded-md text-center`}

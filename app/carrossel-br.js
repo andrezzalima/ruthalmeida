@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/swiper-bundle.css';
 import Image from 'next/image';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 
-const Carousel = () => {
+const CarouselBr = () => {
   const projects = [
     {
       image: "/images/carrossel1.png",
@@ -37,47 +36,27 @@ const Carousel = () => {
       <Swiper
         modules={[Autoplay, Navigation, Pagination]}
         breakpoints={{
-            640: {
-              slidesPerView: 1, 
-            },
-            768: {
-              slidesPerView: 2, 
-            },
-          }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
         }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         loop={true}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
+        navigation
         className="carousel overflow-hidden max-w-full"
       >
         {projects.map((project, index) => (
           <SwiperSlide key={index}>
             <div className="p-5 text-center">
-              {project.link ? (
-                <Link href={project.link} passHref>
-                  <Image
-                    src={project.image}
-                    alt={`Project ${index + 1}`}
-                    width={500}
-                    height={300}
-                    className="mx-auto rounded-lg"
-                  />
-                </Link>
-              ) : (
+              <Link href={project.link} passHref>
                 <Image
                   src={project.image}
-                  alt={`Project ${index + 1}`}
+                  alt={`Projeto ${index + 1}`}
                   width={500}
                   height={300}
                   className="mx-auto rounded-lg"
                 />
-              )}
+              </Link>
             </div>
           </SwiperSlide>
         ))}
@@ -86,4 +65,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default CarouselBr;
