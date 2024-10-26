@@ -158,7 +158,7 @@ const Montagem = () => {
                                             height={20}
                                             alt="BR"
                                         />
-                                        <span className="ml-1 text-xs p-2 mr-4">PT</span>
+                                        <span className="ml-1 text-xs p-2 mr-4">BR</span>
                                     </li>
                                     <li className="flex items-center p-2 hover:bg-gray-200 rounded-b-lg cursor-pointer"
                                         onClick={() => handleLanguageChange('eua')}>
@@ -168,7 +168,7 @@ const Montagem = () => {
                                             height={20}
                                             alt="EUA"
                                         />
-                                        <span className="ml-1 text-xs p-2">EN</span>
+                                        <span className="ml-1 text-xs p-2">EUA</span>
                                     </li>
                                 </ul>
                             )}
