@@ -133,13 +133,13 @@ export default function Home() {
               {/* Div imagem e links sociais */}
               <div className=''>
                 <div className="flex gap-6 py-8 justify-center md:gap-16">
-                  <a href='https://www.instagram.com/ruthalmeida.mesaposta/' target='_blank' rel="noopener noreferrer">
+                  <a href='' target='_blank' rel="noopener noreferrer">
                     <FaInstagram className='text-2xl hover:text-customgold transition-all duration-300' />
                   </a>
-                  <a href='https://api.whatsapp.com/send?phone=14435381087' target='_blank' rel="noopener noreferrer">
+                  <a href='' target='_blank' rel="noopener noreferrer">
                     <FaWhatsapp className='text-2xl hover:text-customgold transition-all duration-300' />
                   </a>
-                  <a href='https://www.facebook.com/profile.php?id=61564836491857&mibextid=LQQJ4d' target='_blank' rel="noopener noreferrer">
+                  <a href='' target='_blank' rel="noopener noreferrer">
                     <FaFacebook className='text-2xl hover:text-customgold transition-all duration-300' />
                   </a>
                 </div>
