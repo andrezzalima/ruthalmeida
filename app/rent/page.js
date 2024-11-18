@@ -127,13 +127,13 @@ const Aluguel = () => {
                     {/* Div imagem e links sociais */}
                     <div className=''>
                         <div className="flex gap-6 py-8 justify-center md:gap-16">
-                            <a href='https://www.instagram.com/ruthalmeida.mesaposta/' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaInstagram className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
-                            <a href='https://api.whatsapp.com/send?phone=14435381087' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaWhatsapp className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
-                            <a href='https://www.facebook.com/profile.php?id=61564836491857&mibextid=LQQJ4d' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaFacebook className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
                         </div>
@@ -202,7 +202,7 @@ const Aluguel = () => {
                             <p className="text-lg text-center text-gray-700 mb-6 max-w-2xl mx-auto">
                                 {t('rental-desc')}
                             </p>
-                            <a href="https://api.whatsapp.com/send?phone=14435381087&text=Olá!%20Quero%20saber%20mais%20sobre%20o%20aluguel%20de%20peças.%0AHi!%20I%20want%20to%20know%20more%20about%20the%20rental%20of%20pieces." className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
+                            <a href="" className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
                                 {t('rental-button')}
                             </a>
 

@@ -124,13 +124,13 @@ const Montagem = () => {
                     {/* Div imagem e links sociais */}
                     <div className=''>
                         <div className="flex gap-6 py-8 justify-center md:gap-16">
-                            <a href='https://www.instagram.com/ruthalmeida.mesaposta/' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaInstagram className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
-                            <a href='https://api.whatsapp.com/send?phone=14435381087' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaWhatsapp className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
-                            <a href='https://www.facebook.com/profile.php?id=61564836491857&mibextid=LQQJ4d' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaFacebook className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
                         </div>
@@ -198,7 +198,7 @@ const Montagem = () => {
                             <p className="text-lg text-center text-gray-700 mb-10 max-w-2xl mx-auto">
                                 {t('take-and-mount-desc')}
                             </p>
-                            <a href="https://api.whatsapp.com/send?phone=14435381087&text=Olá!%20Estou%20interessado%20em%20receber%20o%20kit%20completo%20de%20Mesa%20Posta.%0AHi!%20I'm%20interested%20in%20receiving%20the%20complete%20table%20setting%20kit." className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
+                            <a href="" className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
                                 {t('take-and-mount-button')}
                             </a>
                         </div>

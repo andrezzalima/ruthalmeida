@@ -274,7 +274,7 @@ export default function Home() {
 
                 </div>
                 <div className="my-10">
-                  <a href="https://ruthalmeida1247.systeme.io/ebookruthalmeida" className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target="_blank" rel="noopener noreferrer">
+                  <a href="" className="px-8 py-3 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target="_blank" rel="noopener noreferrer">
                     {t("download-ebook")}
                   </a>
                 </div>
@@ -317,7 +317,7 @@ export default function Home() {
 
                 </div>
                 <div className="my-10">
-                  <a href="https://p.eduzz.com/2355119?a=607065028" className="px-8 py-3 mt-10 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target='_blank'>
+                  <a href="" className="px-8 py-3 mt-10 text-lg font-semibold text-customwhite bg-customgold rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300" target='_blank'>
                     {t('extra-project-button')}
                   </a>
                 </div>

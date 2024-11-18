@@ -129,7 +129,7 @@ const Consultoria = () => {
                             <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaWhatsapp className='text-2xl' />
                             </a>
-                            <a href='https://www.facebook.com/profile.php?id=61564836491857&mibextid=LQQJ4d' target='_blank' rel="noopener noreferrer">
+                            <a href='' target='_blank' rel="noopener noreferrer">
                                 <FaFacebook className='text-2xl hover:text-customgold transition-all duration-300' />
                             </a>
                         </div>
@@ -195,7 +195,7 @@ const Consultoria = () => {
                             <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
                                 {t("consultancy-description")}
                             </p>
-                            <a href="https://api.whatsapp.com/send?phone=14435381087&text=Olá!%20Estou%20interessado%20na%20consultoria%20especializada%20para%20mesa%20posta.%0AHi!%20I'm%20interested%20in%20the%20specialized%20consultation%20for%20table%20setting." className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
+                            <a href="" className="bg-customgold text-white px-4 py-2 rounded hover:bg-customrose transition-all duration-300" target='_blank'>
                                 {t("consultancy-button")}
                             </a>
                         </div>
